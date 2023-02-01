@@ -1,2 +1,2 @@
-# image-splitter
+# Image Splitter
 TO DO
