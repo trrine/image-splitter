@@ -1,5 +1,5 @@
 # Image Splitter
-TO DO
+This program splits a given image into a given number of new images and saves them. 
 
 ## Description
 TO DO
