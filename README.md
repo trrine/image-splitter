@@ -1,4 +1,5 @@
 # Image Splitter
+Python program that can split an image into multiple new images.
 
 ## Description
 This program splits a given image into a given number of new images and saves them. The user provides the name/path of a file as, and if the file can be found and if it is and image file (jpg/jpeg, png, or bmp), the image will be split into a number of new images. This number is also specified by the user and must be a number that is divisible by 4. The new images are saved in the same location as the original image. When saving the new images, the program takes measures to prevent overwriting existing files of the same names. 
