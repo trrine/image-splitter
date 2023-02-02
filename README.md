@@ -5,7 +5,6 @@ TO DO
 TO DO
 
 ## Getting Started
-TO DO
 
 ### Dependencies
 - Python 3
