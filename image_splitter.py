@@ -79,18 +79,15 @@ class ImageSplitter:
             output_file = name + self._file_extension
             cv2.imwrite(output_file, image.get_image())
 
-        print("Saved", self._output_number, "new images.")
 
 
 def valid_file(file_path):
     if not os.path.isfile(file_path):
-        print("File not found.")
         return False
 
     _, extension = os.path.splitext(file_path)
 
     if extension not in IMAGE_FORMATS:
-        print("File must be of one of the following types: jpg/jpeg, bmp, or png.")
         return False
 
     return True
@@ -115,13 +112,31 @@ def valid_output_number(number):
 
 def main():
     args = sys.argv
-    image_path = args[1]
+    path = args[1]
     output_number = int(args[2])
 
-    if valid_file(image_path) and valid_output_number(output_number):
-        splitter = ImageSplitter(image_path, output_number)
+    if not valid_output_number(output_number):
+        return
+
+
+    if os.path.isdir(path): 
+        content = [os.path.join(path, f) for f in os.listdir(path)]
+        to_split = [f for f in content if valid_file(f)]      
+
+        for i, image in enumerate(to_split):
+            splitter = ImageSplitter(image, output_number)
+            splitter.split_image()
+            splitter.save_images()
+            print(i+1, "of", len(to_split), "images split.")
+            
+    elif valid_file(path):
+        splitter = ImageSplitter(path, output_number)
         splitter.split_image()
         splitter.save_images()
+        ("1 image split.")
+
+    else:
+        print("Invalid path.")
 
     
 if __name__ == '__main__':
